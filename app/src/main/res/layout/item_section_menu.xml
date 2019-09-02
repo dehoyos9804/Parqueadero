@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:background="@drawable/ic_liner_layer"
+    android:paddingBottom="8dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp">
+
+    <!--icono del menu-->
+    <ImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_power_light"/>
+
+    <!--Nombre de la enfermedad-->
+    <TextView
+        android:id="@+id/txtTextoMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="70dp"
+        android:textColor="@android:color/darker_gray"
+        android:text="Cerrar sesión"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:fontFamily="sans-serif-condensed-light" />
+
+</RelativeLayout>
