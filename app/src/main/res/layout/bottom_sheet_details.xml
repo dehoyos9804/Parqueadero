@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_shent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="90dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <Button
+        android:id="@+id/btn_cerrar_button_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar"
+        android:drawableBottom="@drawable/ic_botton_sheet_bajar"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:fontFamily="monospace"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/image"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mi Parqueadero"
+        android:textColor="@android:color/black"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:drawableLeft="@drawable/mi_ubicacion"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:fontFamily="serif"
+        android:text="Distancia promedio: 4 min"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:fontFamily="serif"
+            android:text="Disponibilidad: "
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:fontFamily="serif"
+            android:text="desocupado"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:fontFamily="serif"
+            android:text="Horario "
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:fontFamily="serif"
+            android:text="06:00 am - 12:00 am"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="100dp"
+            android:textSize="10dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_round_button"
+            android:textColor="@android:color/white"
+            android:text="VER TARIFAS"/>
+
+        <Button
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="100dp"
+            android:textSize="10dp"
+            android:background="@drawable/ic_round_button"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="Apartar Cupo"/>
+
+        <Button
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="100dp"
+            android:textSize="10dp"
+            android:background="@drawable/ic_round_button"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="ver ruta"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"/>
+
+</LinearLayout>

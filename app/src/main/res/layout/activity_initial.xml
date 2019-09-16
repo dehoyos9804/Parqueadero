@@ -10,12 +10,18 @@
 
     <!-- Contenido Principal -->
     <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         layout="@layout/content_main" />
+
+    <include
+        layout="@layout/bottom_sheet_details"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/botonNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         design:menu="@menu/menu_nav"
         android:layout_gravity="bottom"/>
 

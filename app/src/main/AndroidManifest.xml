@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.com.ingenesys">
 
+    <!--permiso de red-->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--permiso de google maps-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.hardware.location.gps" />

@@ -23,7 +23,6 @@ public class ExplorarMapsFragment extends SupportMapFragment {
 
     //costructor del fragmento
     public ExplorarMapsFragment() {
-
     }
 
     /**
