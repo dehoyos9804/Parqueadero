@@ -9,7 +9,7 @@ public class Constantes {
     //Puerto Utilizado en la conexion
     private static final String PUERTO_HOST = ":80";
     //Dirección IP
-    public static final String IP = "10.14.80.23";
+    public static final String IP = "10.14.80.23";<
 
     //rutas web service ~ parqueadero
     public static final String GET_PARQUEADEROS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/parqueadero/obtener_parqueaderos.php";
