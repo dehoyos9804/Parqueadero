@@ -54,6 +54,17 @@
                 android:value=".ui.InitialActivity" />
         </activity>
 
+
+        <!-- Actividad initial para el usuario -->
+        <activity
+            android:name=".ui.TarifasActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.NoToolbar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.TarifasActivity" />
+        </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

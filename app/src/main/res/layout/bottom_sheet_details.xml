@@ -22,12 +22,14 @@
         android:fontFamily="monospace"/>
 
     <ImageView
+        android:id="@+id/imgParqueadero"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:src="@drawable/image"
         android:scaleType="centerCrop"/>
 
     <TextView
+        android:id="@+id/txtNombreParqueadero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mi Parqueadero"
@@ -98,6 +100,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btnVerTarifas"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="30dp"
             android:layout_width="100dp"
@@ -108,6 +111,7 @@
             android:text="VER TARIFAS"/>
 
         <Button
+            android:id="@+id/btnApartarCupo"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="10dp"
             android:layout_width="100dp"
@@ -118,6 +122,7 @@
             android:text="Apartar Cupo"/>
 
         <Button
+            android:id="@+id/btnVerRuta"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="10dp"
             android:layout_width="100dp"
