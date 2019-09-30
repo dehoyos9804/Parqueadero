@@ -74,6 +74,7 @@ import java.util.List;
 import java.util.Locale;
 
 import co.com.ingenesys.R;
+import co.com.ingenesys.fragment.DialogoReservar;
 import co.com.ingenesys.fragment.ExplorarMapsFragment;
 import co.com.ingenesys.fragment.MenuFragment;
 import co.com.ingenesys.fragment.PruebaFragment;
@@ -114,7 +115,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
     private ImageView imgParqueadero;
     private TextView txtNombreParqueadero;
     private Button btnVerTarifas;
-    private Button btnApartarCupo;
+    private Button btnReservar;
     private Button btnVerRuta;
 
     private GeoApiContext geoApiContext = null;
@@ -144,7 +145,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
         imgParqueadero = (ImageView) bottom_sheet.findViewById(R.id.imgParqueadero);
         txtNombreParqueadero = (TextView) bottom_sheet.findViewById(R.id.txtNombreParqueadero);
         btnVerTarifas = (Button) bottom_sheet.findViewById(R.id.btnVerTarifas);
-        btnApartarCupo = (Button) bottom_sheet.findViewById(R.id.btnApartarCupo);
+        btnReservar = (Button) bottom_sheet.findViewById(R.id.btnReservar);
         btnVerRuta = (Button) bottom_sheet.findViewById(R.id.btnVerRuta);
 
         //colocar oculto el botton sheet
@@ -495,6 +496,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                     //cambiar datos de la ventana
 
                     txtNombreParqueadero.setText(parking.get(i).getRazonSocial());
+                    final String nombreParqueadero = parking.get(i).getRazonSocial();
                     final String latitudFinal = parking.get(i).getUbicacionLat();
                     final String longitudFinal = parking.get(i).getUbicacionLon();
 
@@ -504,6 +506,14 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                         public void onClick(View v) {
                             Intent intent = new Intent(InitialActivity.this, TarifasActivity.class);
                             startActivity(intent);
+                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        }
+                    });
+
+                    btnReservar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            DialogoReservar.showDialogReservar(InitialActivity.this, nombreParqueadero);
                             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         }
                     });

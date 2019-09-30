@@ -5,7 +5,7 @@
 
     <!--texto del menu-->
     <string name="nav_home">Explorar</string>
-    <string name="nav_configuracion">Configuracion</string>
+    <string name="nav_configuracion">Reservas</string>
     <string name="nav_men">Menú</string>
     <string name="title_activity_maps">Map</string>
     <string name="home_item">Explorar</string>
