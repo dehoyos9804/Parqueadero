@@ -11,9 +11,15 @@ public class Parqueaderos {
     private String UbicacionLon;
     private String Foto;
     private String Descripcion;
+    private String horaI;
+    private String horaF;
+    private String diasemana;
+    private String cupos;
 
     //constructor
-    public Parqueaderos(String id, String CodigoCamaraComercio, String RazonSocial, String TELEFONO, String DIRECCION, String usuario_id, String UbicacionLat, String UbicacionLon, String Foto, String Descripcion) {
+    public Parqueaderos(String id, String CodigoCamaraComercio, String RazonSocial, String TELEFONO,
+                        String DIRECCION, String usuario_id, String UbicacionLat, String UbicacionLon,
+                        String Foto, String Descripcion, String horaI, String horaF, String diasemana, String cupos) {
         this.id = id;
         this.CodigoCamaraComercio = CodigoCamaraComercio;
         this.RazonSocial = RazonSocial;
@@ -24,6 +30,10 @@ public class Parqueaderos {
         this.UbicacionLon = UbicacionLon;
         this.Foto = Foto;
         this.Descripcion = Descripcion;
+        this.horaI = horaI;
+        this.horaF = horaF;
+        this.diasemana = diasemana;
+        this.cupos = cupos;
     }
 
     //getter y setter
@@ -105,5 +115,37 @@ public class Parqueaderos {
 
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
+    }
+
+    public String getHoraI() {
+        return horaI;
+    }
+
+    public void setHoraI(String horaI) {
+        this.horaI = horaI;
+    }
+
+    public String getHoraF() {
+        return horaF;
+    }
+
+    public void setHoraF(String horaF) {
+        this.horaF = horaF;
+    }
+
+    public String getDiasemana() {
+        return diasemana;
+    }
+
+    public void setDiasemana(String diasemana) {
+        this.diasemana = diasemana;
+    }
+
+    public String getCupos() {
+        return cupos;
+    }
+
+    public void setCupos(String cupos) {
+        this.cupos = cupos;
     }
 }

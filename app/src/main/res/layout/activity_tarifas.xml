@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context=".ui.TarifasActivity">
 
     <!--Objeto con scroll-->
     <android.support.v4.widget.NestedScrollView
@@ -19,127 +20,78 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="1dp">
+            android:layout_margin="15dp">
 
-            <!--CardPerfil-->
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:background="@drawable/ic_liner_layer"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Horarios de atención"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <LinearLayout
-                    style="@style/Widget.CardContent"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="9dp">
 
-                    <!--Etiqueta perfil-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tarifas"
-                        android:gravity="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Vehiculos:"
-                            android:drawableLeft="@drawable/ic_vehiculo_light"
-                            android:fontFamily="serif-monospace"
-                            android:textColor="@android:color/black"
-                            android:textAppearance="?android:textAppearanceMedium"/>
-
-                        <TextView
-                            android:id="@+id/txtTemaElegido"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="$70 Minuto"
-                            android:layout_marginLeft="20dp"
-                            android:fontFamily="serif-monospace"
-                            android:textColor="@android:color/black"
-                            android:textAppearance="?android:textAppearanceMedium"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Tarifa plena"
-                            android:fontFamily="serif-monospace"
-                            android:textColor="@android:color/black"
-                            android:textAppearance="?android:textAppearanceMedium"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="$6.000"
-                            android:layout_marginLeft="20dp"
-                            android:fontFamily="serif-monospace"
-                            android:textColor="@android:color/black"
-                            android:textAppearance="?android:textAppearanceMedium"/>
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="40sp"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/ic_horarios_light"/>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/txtHoraI"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Hasta 3 Horas"
-                        android:layout_marginLeft="20dp"
-                        android:fontFamily="serif-monospace"
-                        android:textColor="@android:color/black"
-                        android:textAppearance="?android:textAppearanceMedium"/>
+                        android:layout_gravity="center"
+                        android:text="08:00:00 am"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginRight="15dp"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:fontFamily="sans-serif-light"/>
 
+                    <TextView
+                        android:id="@+id/txtHoraF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="12:00:00 am"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="sans-serif-light"
+                        />
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tarifas"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"/>
 
+            </LinearLayout>
 
-            <!--CardPerfil-->
-            <android.support.v7.widget.CardView
+            <LinearLayout
+                android:id="@+id/layer_tarifa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    style="@style/Widget.CardContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <!--Etiqueta perfil-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Horarios"
-                        android:gravity="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-
-
-
-                    <TextView
-                        android:id="@+id/txtHoraDetalleCita"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="06:00:00 am  - 01:00:00 am"
-                        android:fontFamily="serif-monospace"
-                        android:textColor="@android:color/black"
-                        android:textAppearance="?android:textAppearanceMedium"/>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
+                android:gravity="center"
+                android:orientation="vertical"/>
 
         </LinearLayout>
 

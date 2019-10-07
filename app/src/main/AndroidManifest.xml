@@ -10,6 +10,13 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.hardware.location.gps" />
 
+    <!-- permiso para acceder a la camara-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
+    <!--permiso para escribir las imagenes-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -63,6 +70,26 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.TarifasActivity" />
+        </activity>
+
+        <!-- Actividad para el registro de usuario -->
+        <activity
+            android:name=".ui.RegistroActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Base">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.InitialActivity" />
+        </activity>
+
+        <!-- Actividad inicial para el administrador -->
+        <activity
+            android:name=".ui.InitialAdministradorActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.NoToolbar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.InitialAdministradorActivity" />
         </activity>
 
         <meta-data

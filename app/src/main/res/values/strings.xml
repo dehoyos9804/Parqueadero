@@ -5,8 +5,10 @@
 
     <!--texto del menu-->
     <string name="nav_home">Explorar</string>
+    <string name="nav_home_admin">Inicio</string>
     <string name="nav_configuracion">Reservas</string>
     <string name="nav_men">Menú</string>
     <string name="title_activity_maps">Map</string>
     <string name="home_item">Explorar</string>
+    <string name="cerrar_sesion_item">Cerrar Sesión</string>
 </resources>

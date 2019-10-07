@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_liner_layer"
+    android:gravity="center"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/icono_tipo_vehiculo"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_vehiculo_light"/>
+
+    <TextView
+        android:id="@+id/txtTipoVehiculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Carro:"
+        android:layout_marginRight="15dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:fontFamily="sans-serif-light"/>
+
+    <TextView
+        android:id="@+id/txtPrecioTiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="$20 minuto"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-light"/>
+
+</LinearLayout>

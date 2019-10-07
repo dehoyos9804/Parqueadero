@@ -19,8 +19,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp"
         android:background="@drawable/button_cornered"
@@ -38,8 +37,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -50,11 +48,13 @@
                 android:layout_gravity="center"/>
 
             <EditText
+                android:id="@+id/txtcedulaUsuario"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:cursorVisible="false"
-                android:hint="0000000000"
+                android:fontFamily="sans-serif-light"
+                android:textAppearance="?android:textAppearanceSmall"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:layout_marginRight="5dp"
@@ -63,8 +63,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -75,15 +74,17 @@
                 android:layout_gravity="center"/>
 
             <EditText
+                android:id="@+id/txtUsuarioN"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:clickable="false"
                 android:cursorVisible="false"
+                android:fontFamily="sans-serif-light"
+                android:textAppearance="?android:textAppearanceSmall"
                 android:focusable="false"
-                android:hint="mi nombre y apellido"
                 android:focusableInTouchMode="false"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="2" />
+                android:layout_marginLeft="5dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -122,6 +123,7 @@
                 />
 
             <TextView
+                android:id="@+id/txtTiempoLlegadaReserva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4min aprox."/>
@@ -139,7 +141,8 @@
                 android:layout_marginLeft="30dp"
                 android:text="Tipo Vehiculo: "/>
 
-            <TextView
+            <Spinner
+                android:id="@+id/spinner_tipo_vehiculo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -183,6 +186,7 @@
                 android:text="Fecha: "/>
 
             <TextView
+                android:id="@+id/txtFechaReserva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
@@ -193,10 +197,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="10dp"
                 android:text="Hora: "/>
 
             <TextView
+                android:id="@+id/txtHoraReserva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"

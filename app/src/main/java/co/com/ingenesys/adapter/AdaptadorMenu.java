@@ -1,7 +1,9 @@
 package co.com.ingenesys.adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +18,9 @@ import java.util.List;
 
 import co.com.ingenesys.R;
 import co.com.ingenesys.modelo.MenuModels;
+import co.com.ingenesys.utils.Constantes;
+import co.com.ingenesys.utils.Preferences;
+import co.com.ingenesys.utils.Utilidades;
 
 public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.ExpenseViewHolder> implements ItemClickListener {
 
@@ -58,6 +63,9 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.ExpenseVie
 
     @Override
     public void onItemClick(View view, int position) {
+        if(position == (items.size()-1)){
+            Utilidades.cerrarSesion((Activity) context);//cerramos sesion
+        }
         //DetailConsultaActivity.launch((Activity) context, items.get(position).getConsecutivo());
     }
 

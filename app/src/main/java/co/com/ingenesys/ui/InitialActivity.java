@@ -1,6 +1,7 @@
 package co.com.ingenesys.ui;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -114,6 +115,8 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
     private Button btn_cerrar_button_sheet;
     private ImageView imgParqueadero;
     private TextView txtNombreParqueadero;
+    private TextView txtHoraInicial;
+    private TextView txtHoraFinal;
     private Button btnVerTarifas;
     private Button btnReservar;
     private Button btnVerRuta;
@@ -144,6 +147,8 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
         btn_cerrar_button_sheet = (Button) bottom_sheet.findViewById(R.id.btn_cerrar_button_sheet);
         imgParqueadero = (ImageView) bottom_sheet.findViewById(R.id.imgParqueadero);
         txtNombreParqueadero = (TextView) bottom_sheet.findViewById(R.id.txtNombreParqueadero);
+        txtHoraInicial = (TextView) bottom_sheet.findViewById(R.id.txtHoraInicial);
+        txtHoraFinal = (TextView) bottom_sheet.findViewById(R.id.txtHoraFinal);
         btnVerTarifas = (Button) bottom_sheet.findViewById(R.id.btnVerTarifas);
         btnReservar = (Button) bottom_sheet.findViewById(R.id.btnReservar);
         btnVerRuta = (Button) bottom_sheet.findViewById(R.id.btnVerRuta);
@@ -449,6 +454,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
     }
 
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -466,24 +472,6 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        /*if(marker.equals(markerParqueadero)){
-            bottom_sheet.setVisibility(View.VISIBLE);//coloco visible el bottom sheet
-            if(sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED){
-                sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-
-                //disparar eventos de ver tarifas
-                btnVerTarifas.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(InitialActivity.this, TarifasActivity.class);
-                        startActivity(intent);
-                        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    }
-                });
-            }
-
-            return true;//evita que se muestre el infoWindows
-        }*/
         final String latitudInicial = String.valueOf(latitud);
         final String longitudInicial = String.valueOf(longitud);
 
@@ -496,7 +484,13 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                     //cambiar datos de la ventana
 
                     txtNombreParqueadero.setText(parking.get(i).getRazonSocial());
+                    txtHoraInicial.setText(parking.get(i).getHoraI());
+                    txtHoraFinal.setText(parking.get(i).getHoraF());
+
                     final String nombreParqueadero = parking.get(i).getRazonSocial();
+                    final String parqueadero_id = parking.get(i).getId();
+                    final String horaI = parking.get(i).getHoraI();
+                    final String horaF = parking.get(i).getHoraF();
                     final String latitudFinal = parking.get(i).getUbicacionLat();
                     final String longitudFinal = parking.get(i).getUbicacionLon();
 
@@ -504,16 +498,15 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                     btnVerTarifas.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(InitialActivity.this, TarifasActivity.class);
-                            startActivity(intent);
-                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                            TarifasActivity.launch(InitialActivity.this, parqueadero_id, horaI, horaF);//abro la actividad de Tarifas
+                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);//cierro el boton sheet
                         }
                     });
 
                     btnReservar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            DialogoReservar.showDialogReservar(InitialActivity.this, nombreParqueadero);
+                            DialogoReservar.showDialogReservar(InitialActivity.this,parqueadero_id, nombreParqueadero, "4 min");
                             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         }
                     });
@@ -522,8 +515,8 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                     btnVerRuta.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            webServiceObtenerRuta(latitudInicial, longitudInicial, latitudFinal, longitudFinal);
-                            pintarRutas();
+                            //webServiceObtenerRuta(latitudInicial, longitudInicial, latitudFinal, longitudFinal);
+                            //pintarRutas();
                         }
                     });
 
@@ -586,7 +579,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                         //llenar los parqueaderos de la lista
                         for(int i = 0; i < mensaje.length(); i++){
                             JSONObject object = (JSONObject) mensaje.get(i);
-                            parking.add(new Parqueaderos(object.getString("id"),object.getString("CodigoCamaraComercio"), object.getString("RazonSocial"), object.getString("TELEFONO"),object.getString("DIRECCION"), object.getString("usuario_id"), object.getString("UbicacionLat"), object.getString("UbicacionLon"),object.getString("Foto"), object.getString("Descripcion")));
+                            parking.add(new Parqueaderos(object.getString("id"),object.getString("CodigoCamaraComercio"), object.getString("RazonSocial"), object.getString("TELEFONO"),object.getString("DIRECCION"), object.getString("usuario_id"), object.getString("UbicacionLat"), object.getString("UbicacionLon"),object.getString("Foto"), object.getString("Descripcion"), object.getString("horaI"), object.getString("horaF"), object.getString("diasemana"), object.getString("cupos")));
                             //Utilidades.showToast(this, "parking size-->" + object.getString("UbicacionLat"));
                         }
 

@@ -82,14 +82,33 @@
             android:layout_marginLeft="50dp"
             android:textAppearance="?android:textAppearanceMedium"
             android:fontFamily="serif"
-            android:text="Horario "
+            android:text="Horarios:"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtHoraInicial"
+            android:layout_width="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:fontFamily="serif"
+            android:text="06:00 am"
+            android:textColor="@color/colorPrimary"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:textAppearance="?android:textAppearanceSmall"
             android:fontFamily="serif"
-            android:text="06:00 am - 12:00 am"
+            android:text=" - "
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/txtHoraFinal"
+            android:layout_width="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:fontFamily="serif"
+            android:text="06:00 am"
+            android:textColor="@color/colorPrimary"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
