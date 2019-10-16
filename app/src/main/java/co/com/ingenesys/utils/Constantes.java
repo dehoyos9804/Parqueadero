@@ -19,6 +19,12 @@ public class Constantes {
     public static final String INSERT_NEW_USUARIO = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/usuario/insertar_new_usuario.php";
     public static final String GET_INICIAR_SESION = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/usuario/iniciar_sesion_user.php";
     public static final String INSERT_NEW_PARKING = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/parqueadero/insertar_new_parqueadero.php";
+    public static final String GET_EXISTE_PARQUEADERO = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/parqueadero/obtener_numero_parqueadero.php";
+    public static final String GET_DETALLE_PARQUEADERO = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/parqueadero/obtener_parqueadero_usuario_id.php";
+    public static final String GET_CAPACIDADES_PARQUEADERO_ID = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/capacidad/obtener_all_capacidad.php";
+    public static final String INSERTAR_CAPACIDADES = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/capacidad/insertar_new_capacidades.php";
+    public static final String INSERTAR_TARIFAS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/tarifa/insertar_new_tarifa.php";
+    public static final String GET_ALL_ZONAS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/capacidad/obtener_all_zonas.php";
     //public static final String GET_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_parqueaderos.php";
 
     //ruta Api para poder obtener las rutas
@@ -47,6 +53,7 @@ public class Constantes {
     public static final String PREFERENCIA_FECHA_NACIMIENTO_CLAVE = "fechanacimiento";
     public static final String PREFERENCIA_TIPO_USUARIO_CLAVE = "tipo_usuario";
     public static final String PREFERENCIA_MANTENER_SESION_CLAVE = "mantener_sesion";
+    public static final String PREFERENCIA_PARQUEADERO_ID = "parqueadero_id";
 
     //constante para los permisos de la camara
     public static final int CODE_PERMISON_CAMERA_AND_WRITE_STORAGE = 111;

@@ -5,7 +5,55 @@
             android:id="@+id/nav_home"
             android:checked="true"
             android:icon="@drawable/ic_home_light"
-            android:title="@string/nav_home_admin"/>
+            android:title="Mi Parqueadero"/>
+
+        <item
+            android:id="@+id/nav_horario"
+            android:checked="true"
+            android:icon="@drawable/ic_calendar_light"
+            android:title="Registrar Horarios"/>
+
+        <item
+            android:id="@+id/nav_tarifas"
+            android:checked="true"
+            android:icon="@drawable/ic_movimiento_light"
+            android:title="Registrar Tarifas"/>
+
+        <item
+            android:id="@+id/nav_menu_zona"
+            android:title="Zonas">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_mis_zonas"
+                        android:icon="@drawable/ic_zonas_light"
+                        android:title="Mis Zonas" />
+
+                    <item
+                        android:id="@+id/nav_add_zonas"
+                        android:icon="@drawable/ic_capacidad_light"
+                        android:title="Registrar Capacidad (Zonas)" />
+                </group>
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/nav_menu_movimiento"
+            android:title="Movimientos">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_reporte_diarios"
+                        android:icon="@drawable/ic_movimiento_light"
+                        android:title="Reporte diarios" />
+
+                    <item
+                        android:id="@+id/nav_reporte_mensuales"
+                        android:icon="@drawable/ic_reporte_light"
+                        android:title="Reportes mensuales" />
+                </group>
+            </menu>
+        </item>
 
         <item
             android:id="@+id/nav_cerrar_sesion"

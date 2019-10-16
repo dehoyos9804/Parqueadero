@@ -11,4 +11,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="home_item">Explorar</string>
     <string name="cerrar_sesion_item">Cerrar Sesión</string>
+    <string name="home_admin">Parqueadero</string>
+
+    <string name="empty_list">No hay datos</string>
 </resources>

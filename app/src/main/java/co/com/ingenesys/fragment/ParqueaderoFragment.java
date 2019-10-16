@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
@@ -16,6 +17,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -69,6 +72,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import co.com.ingenesys.R;
+import co.com.ingenesys.ui.InitialActivity;
 import co.com.ingenesys.utils.Constantes;
 import co.com.ingenesys.utils.Preferences;
 import co.com.ingenesys.utils.Utilidades;
@@ -110,6 +114,11 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
     private static final int PICK_IMAGE_REQUEST = 1;
     public static final int PICK_CAMERA_REQUEST = 2;
     private Bitmap bmatp;
+
+    //direccion donde se almacenara las imagenes tomadas por el usuario
+    private final String CARPETA_RAIZ = "AppParking/";
+    private final String RUTA_IMAGEN_NEW = CARPETA_RAIZ + "AppParking";
+    private String path;
 
     //costructor del fragmento
     public ParqueaderoFragment() {
@@ -408,24 +417,39 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
         //Vericamos los permisos para la camara
         if (Utilidades.checkExternalStoragePermission(getActivity())) {
             //creamos directorio donde se guardara la imagen tomada por el usuario
+            File fileimage = new File(Environment.getExternalStorageDirectory(), RUTA_IMAGEN_NEW);
+            boolean isCreada = fileimage.exists();//verificar si la imagen existe en el directorio
+            String nombreImage = "";
+
+            if (!isCreada) {
+                isCreada = fileimage.mkdirs();
+            }
+
+            if (isCreada) {
+                nombreImage = "img-" + (System.currentTimeMillis() / 1000) + ".png";
+            }
+
+            path = Environment.getExternalStorageDirectory() + File.separator + RUTA_IMAGEN_NEW + File.separator + nombreImage;
+
+            File imagen = new File(path);
 
             //abrir la camara
             Intent lanzarcamara = null;
             lanzarcamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             //Validomos si tenemos andriod superiores a 7.0
-            /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 String authorities = getActivity().getApplicationContext().getPackageName() + ".provider";
-                //Uri imageUri = FileProvider.getUriForFile(getActivity(), authorities, imagen);
+                Uri imageUri = FileProvider.getUriForFile(getActivity(), authorities, imagen);
                 lanzarcamara.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
             } else {
                 lanzarcamara.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagen));
-            }*/
+            }
             startActivityForResult(lanzarcamara, PICK_CAMERA_REQUEST);
+            myDialog.dismiss();//cierro el dialogoy
 
         }
 
     }
-
 
 
     private void showFileChooser(int caso){
@@ -461,22 +485,38 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode != 0){
+            switch (requestCode){
+                case PICK_IMAGE_REQUEST:
+                    Uri filePath = data.getData();
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK &&  data != null && data.getData() != null){
-            Uri filePath = data.getData();
-
-            try {
-                //obtengo el mapa de bits de la galeria
-                bmatp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),filePath);
-                //configuración del mapa de bits en ImageView
-                imagen_parking.setImageBitmap(bmatp);
-                myDialog.dismiss();
-            }catch (IOException e){
-                e.printStackTrace();
-                Log.i(TAG, "Error en Foto.. "+e.getLocalizedMessage());
-                Toast.makeText(this.getActivity(),"Error En Foto " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    try {
+                        //obtengo el mapa de bits de la galeria
+                        bmatp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),filePath);
+                        //configuración del mapa de bits en ImageView
+                        imagen_parking.setImageBitmap(bmatp);
+                        myDialog.dismiss();
+                    }catch (IOException e){
+                        e.printStackTrace();
+                        Log.i(TAG, "Error en Foto.. "+e.getLocalizedMessage());
+                        Toast.makeText(this.getActivity(),"Error En Foto " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                    break;
+                case PICK_CAMERA_REQUEST:
+                    //permitir que nuestra imagen tomada se almacene en la galeria
+                    MediaScannerConnection.scanFile(getActivity(), new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                        @Override
+                        public void onScanCompleted(String path, Uri uri) {
+                            //especifica si el proceso termino exitosamente
+                            Log.i(TAG, "path almacenado con exito: " + path);
+                        }
+                    });
+                    bmatp = BitmapFactory.decodeFile(path);
+                    imagen_parking.setImageBitmap(bmatp);
+                    break;
             }
         }
+
 
     }
 
@@ -499,7 +539,7 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
         String latitud = txtLatitud.getText().toString().trim();
         String longitud = txtLongitud.getText().toString().trim();
         String foto = "";
-        String descripcion = "";
+        String descripcion = txtDescripcion.getText().toString().trim();
 
 
         LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();// Mapeo previo
@@ -580,11 +620,11 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
                     loading.dismiss();
                     // Mostrar mensaje
                     showSnackBar(mensaje);
-                    // Enviar código de éxito
-                    //setResult(Activity.RESULT_OK);
-                    //limpiar();
-                    // Terminar actividad
-                    //finish();
+
+                    Fragment fragment = DetalleParqueaderoFragment.newInstance();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.main_content,fragment).commit();
+                    getActivity().setTitle(R.string.home_admin);
                     break;
 
                 case "2":

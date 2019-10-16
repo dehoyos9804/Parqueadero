@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_shent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="90dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <Button
+        android:id="@+id/btn_cerrar_button_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:fontFamily="monospace"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/text_tipo_tiempo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Elige el Tipo Tiempo"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/spinner_tipo_tiempo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:gravity="center"
+            android:layout_below="@id/text_tipo_tiempo"/>
+
+        <TextView
+            android:id="@+id/text_tipo_vehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Elige el Tip Vehiculo"
+            android:layout_below="@id/spinner_tipo_tiempo"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/spinner_tipo_vehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:gravity="center"
+            android:layout_below="@id/text_tipo_vehiculo"/>
+
+
+        <EditText
+            android:id="@+id/txtPrecio"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinner_tipo_vehiculo"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:hint="Agrega El Precio"
+            android:inputType="number"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:fontFamily="sans-serif-condensed-light"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/ic_round_button"
+            android:textColor="@android:color/white"
+            android:text="cancelar"/>
+
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/ic_round_button"
+            android:textColor="@android:color/white"
+            android:text="Guardar"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"/>
+
+</LinearLayout>

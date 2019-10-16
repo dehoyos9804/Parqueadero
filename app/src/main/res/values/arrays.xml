@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipo_tiempo">
+        <item>seleccionar</item>
+        <item>Parcial</item>
+        <item>Hora</item>
+        <item>Dia</item>
+        <item>Unico</item>
+        <item>Mensual</item>
+    </string-array>
+</resources>

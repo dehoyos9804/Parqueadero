@@ -37,7 +37,7 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.ExpenseVie
     }
 
     @Override
-    public int getItemCount() {
+        public int getItemCount() {
         if(items != null){
             return items.size();
         }

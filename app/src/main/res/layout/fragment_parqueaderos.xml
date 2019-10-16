@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator_parking"
     android:layout_width="match_parent"
@@ -48,8 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:src="@drawable/image"
-                    android:layout_margin="2dp"
-                    android:scaleType="fitXY"/>
+                    android:layout_margin="2dp"/>
 
             </LinearLayout>
 
@@ -127,7 +127,7 @@
                         android:id="@+id/txtCodigoComercio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Codigo Comercio"
+                        android:hint="Codigo Camara Comercio"
                         android:inputType="textPersonName"
                         android:textAppearance="?android:textAppearanceSmall"
                         android:fontFamily="sans-serif-condensed-light"/>
@@ -176,7 +176,7 @@
                     android:id="@+id/txtDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Descirpcion (opcional)"
+                    android:hint="Descripción (opcional)"
                     android:inputType="textPersonName"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:fontFamily="sans-serif-condensed-light"/>

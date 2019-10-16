@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinator_cupos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/button_cornered_grey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button_cornered"
+            android:backgroundTint="#F8F9FA">
+
+            <TextView
+                android:id="@+id/text_tipo_vehiculo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Tipo Vehiculo"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:fontFamily="sans-serif-condensed-light"/>
+
+
+            <Spinner
+                android:id="@+id/spinner_tipo_vehiculo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@id/text_tipo_vehiculo"
+                android:textAppearance="?android:textAppearanceMedium"
+                style="@style/Widget.AppCompat.Spinner"
+                android:fontFamily="sans-serif-condensed-light"/>
+
+            <TextView
+                android:id="@+id/text_cupos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_below="@id/spinner_tipo_vehiculo"
+                android:text="Cupos: "
+                android:textAppearance="?android:textAppearanceLarge"
+                android:fontFamily="sans-serif-condensed-light"/>
+
+            <EditText
+                android:id="@+id/txtCupos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_below="@id/spinner_tipo_vehiculo"
+                android:layout_toRightOf="@id/text_cupos"
+                android:inputType="number"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:fontFamily="sans-serif-condensed-light"/>
+
+            <Button
+                android:id="@+id/btnGuardarCupos"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_round_button"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="25dp"
+                android:layout_below="@id/txtCupos"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Guardar"/>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_marginTop="35dp"
+            android:layout_height="match_parent">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <TableLayout
+                    android:id="@+id/table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                </TableLayout>
+            </HorizontalScrollView>
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

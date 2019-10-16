@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:id="@+id/coordinator_detalle_parking"
+    tools:context=".ui.InitialAdministradorActivity">
+
+    <!--Objeto con scroll-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/maps_detalle_parking"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                tools:context=".ui.MapsActivity"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp">
+
+                <TextView
+                    android:id="@+id/txtRazonSocial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Nombre Parqueadero"/>
+
+                <TextView
+                    android:id="@+id/text_nit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtRazonSocial"
+                    android:layout_marginRight="10dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Nit:"/>
+
+                <TextView
+                    android:id="@+id/txtCamaraComercio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtRazonSocial"
+                    android:layout_toRightOf="@id/text_nit"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtTelefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtRazonSocial"
+                    android:layout_toEndOf="@id/txtCamaraComercio"
+                    android:layout_marginLeft="25dp"
+                    android:drawableLeft="@drawable/ic_phone_light"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtDireccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_nit"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtDescripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtDireccion"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/text_horario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_below="@id/txtDescripcion"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Horarios:"/>
+
+                <TextView
+                    android:id="@+id/txtHorario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_horario"
+                    android:textColor="@color/colorPrimary"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="06:00:00 am - 10:00:00 pm  Lunes - Domingo"/>
+
+                <TextView
+                    android:id="@+id/text_tarifas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_below="@id/txtHorario"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Tarifas:"/>
+
+                <LinearLayout
+                    android:id="@+id/layer_tarifa_admin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_tarifas"
+                    android:gravity="center"
+                    android:orientation="vertical"/>
+
+                <TextView
+                    android:id="@+id/text_capacidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_below="@id/layer_tarifa_admin"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Capacidad Parqueadero:"/>
+
+                <TextView
+                    android:id="@+id/txtCapacidades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_capacidad"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"/>
+
+                <TextView
+                    android:id="@+id/txtDisponibles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_capacidad"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@id/txtCapacidades"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textColor="@color/colorPrimary"
+                    android:text="20 Disponibles "/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="@dimen/size_fab"
+        android:layout_height="@dimen/size_fab"
+        android:layout_margin="@dimen/fab_margin"
+        app:borderWidth="2dp"
+        android:src="@drawable/ic_edi_custon"
+        app:elevation="@dimen/headerbar_elevation"
+        app:layout_anchor="@id/maps_detalle_parking"
+        app:layout_anchorGravity="bottom|right|end"/>
+</android.support.design.widget.CoordinatorLayout>

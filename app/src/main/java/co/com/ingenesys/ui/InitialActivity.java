@@ -378,7 +378,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
         @Override
         public void onLocationChanged(Location location) {
             updateUbicacion(location);
-            setLocation(location);
+            //setLocation(location);
         }
 
         @Override
@@ -452,6 +452,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
         });
         dialog.show();
     }
+
 
 
 

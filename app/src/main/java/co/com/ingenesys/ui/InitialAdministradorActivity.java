@@ -1,5 +1,6 @@
 package co.com.ingenesys.ui;
 
+import android.content.Context;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,16 +14,41 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import co.com.ingenesys.R;
+import co.com.ingenesys.fragment.CuposFragment;
+import co.com.ingenesys.fragment.DetalleParqueaderoFragment;
 import co.com.ingenesys.fragment.ParqueaderoFragment;
+import co.com.ingenesys.fragment.TarifasFragment;
+import co.com.ingenesys.fragment.ZonasFragment;
+import co.com.ingenesys.modelo.NumeroParqueadero;
+import co.com.ingenesys.modelo.Tarifa;
+import co.com.ingenesys.modelo.Usuarios;
 import co.com.ingenesys.utils.Constantes;
 import co.com.ingenesys.utils.Preferences;
 import co.com.ingenesys.utils.Utilidades;
+import co.com.ingenesys.web.VolleySingleton;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class InitialAdministradorActivity extends AppCompatActivity {
@@ -35,6 +61,10 @@ public class InitialAdministradorActivity extends AppCompatActivity {
     private CircleImageView circle_image;
     private Fragment fragment = null;
 
+    private Gson gson = new Gson();
+
+    private int isExisteParqueadero = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +72,7 @@ public class InitialAdministradorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_initial_administrador);
 
         setToolbar(); //añadimos el toolbar
+
 
         initNavegationView(savedInstanceState);
 
@@ -94,14 +125,23 @@ public class InitialAdministradorActivity extends AppCompatActivity {
 
                         switch (menuItem.getItemId()){
                             case R.id.nav_home://inicio
-                                //ParqueaderoFragment fragmentParkin = new ParqueaderoFragment();
-                                //FragmentManager manager = getSupportFragmentManager();
-                                //manager.beginTransaction().replace(R.id.main_content, fragmentParkin).commit();
-                                fragment = new ParqueaderoFragment();
+                                getHTTP();
+                                break;
+                            case R.id.nav_tarifas://registrar tarifas
+                                fragment = new TarifasFragment();
+                                fragmentTrasition = true;
+                                break;
+                            case R.id.nav_mis_zonas:
+                                fragment = new ZonasFragment();
+                                fragmentTrasition = true;
+                                break;
+                            case R.id.nav_add_zonas:
+                                fragment = new CuposFragment();
                                 fragmentTrasition = true;
                                 break;
                             case R.id.nav_cerrar_sesion://cerramos la sesión del usuario actual
                                 Utilidades.cerrarSesion(InitialAdministradorActivity.this);
+                                Preferences.savePreferenceString(InitialAdministradorActivity.this,  "", Constantes.PREFERENCIA_PARQUEADERO_ID);
                                 break;
                         }
 
@@ -147,9 +187,80 @@ public class InitialAdministradorActivity extends AppCompatActivity {
 
     //método que permite colocar el fragmento por defecto
     private void selectItem(){
-        fragment = ParqueaderoFragment.newInstance();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.main_content,fragment).commit();
-        setTitle(R.string.home_item);
+        getHTTP();
+    }
+
+    /**
+     * permite saber si el usuario ya registro un parqueadero
+     */
+    private void getHTTP() {
+
+        String usuario_id = Preferences.getPreferenceString(this, Constantes.PREFERENCIA_IDUSUARIO_CLAVE);
+        String newURL = Constantes.GET_EXISTE_PARQUEADERO + "?usuario_id=" + usuario_id;
+        // Petición GET
+        VolleySingleton.
+                getInstance(this).
+                addToRequestQueue(
+                        new JsonObjectRequest(
+                                Request.Method.GET,
+                                newURL,
+                                null,
+                                new Response.Listener<JSONObject>() {
+
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                        // Procesar la respuesta Json
+                                        procesar(response);
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        //showSnackBar("Error al cargar los datos: " + error.toString());
+                                        Log.d("TAG", "Error Volley: " + error.toString());
+                                    }
+                                }
+
+                        )
+                );
+
+    }
+
+    private void procesar(JSONObject response){
+        try {
+            // Obtener atributo "estado"
+            String estado = response.getString("estado");
+            switch (estado) {
+                case "1":// EXITO
+                    try {
+                        // Obtener array "consulta" Json
+                        JSONObject datos = response.getJSONObject("tbl_parqueaderos");;
+                        //llenar los parqueaderos de la lista
+                        NumeroParqueadero is = gson.fromJson(datos.toString(),NumeroParqueadero.class);
+
+                        isExisteParqueadero = Integer.parseInt(is.getCantidad());
+
+                        if(isExisteParqueadero == 0){
+                            fragment = ParqueaderoFragment.newInstance();
+                        }else{
+                            fragment = DetalleParqueaderoFragment.newInstance();
+                        }
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.main_content,fragment).commit();
+                        getSupportActionBar().setTitle(R.string.home_admin);
+
+                    } catch (JSONException e) {
+                        Log.i("TAG", "Error al llenar Adaptador " + e.getLocalizedMessage());
+                    }
+                    break;
+                case "2":
+                    String mensaje2 = response.getString("mensaje");
+                    //loading.dismiss();
+                    //Utilidades.showToast(this, mensaje2);
+                    break;
+            }
+        } catch (JSONException je) {
+            Log.d("TAG", je.getMessage());
+        }
     }
 }
