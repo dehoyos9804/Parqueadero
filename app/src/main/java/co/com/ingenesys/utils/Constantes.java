@@ -25,6 +25,9 @@ public class Constantes {
     public static final String INSERTAR_CAPACIDADES = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/capacidad/insertar_new_capacidades.php";
     public static final String INSERTAR_TARIFAS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/tarifa/insertar_new_tarifa.php";
     public static final String GET_ALL_ZONAS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/capacidad/obtener_all_zonas.php";
+    public static final String UPDATE_ESTADO_ZONA = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/capacidad/actualizar_estado_zona.php";
+    public static final String INSERT_NEW_HORARIO = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/horario/insertar_new_horario.php";
+    public static final String GET_HORARIOS_PARQUEADEROS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/horario/obtener_horarios.php";
     //public static final String GET_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_parqueaderos.php";
 
     //ruta Api para poder obtener las rutas

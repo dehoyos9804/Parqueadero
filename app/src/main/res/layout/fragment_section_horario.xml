@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bh="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:id="@+id/coordinator_horario">
+
+    <!-- En caso de lista vacía -->
+    <TextView
+        android:id="@+id/data_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="No hay Horarios"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold"/>
+
+    <com.bashizip.bhlib.BusinessHoursWeekView
+        android:layout_centerInParent="true"
+        android:id="@+id/bh_view"
+        android:gravity="center"
+        android:background="#000"
+        bh:bhTextSize="14"
+        android:layout_gravity="center"
+        bh:bhIcon="@drawable/ic_today_black_24dp"
+        bh:bhTodayIcon="@drawable/ic_lock_open_black_24dp"
+        bh:bhTextColor="#FFFF"
+        bh:bhTodayColor="#ffb300"
+        bh:bhTodayTextSize="16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_horario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:tooltipText="Agregar Tarifas"
+        android:src="@drawable/ic_add_dark"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import co.com.ingenesys.R;
 import co.com.ingenesys.fragment.CuposFragment;
 import co.com.ingenesys.fragment.DetalleParqueaderoFragment;
+import co.com.ingenesys.fragment.HorarioFragment;
 import co.com.ingenesys.fragment.ParqueaderoFragment;
 import co.com.ingenesys.fragment.TarifasFragment;
 import co.com.ingenesys.fragment.ZonasFragment;
@@ -126,6 +127,10 @@ public class InitialAdministradorActivity extends AppCompatActivity {
                         switch (menuItem.getItemId()){
                             case R.id.nav_home://inicio
                                 getHTTP();
+                                break;
+                            case R.id.nav_horario:
+                                fragment = new HorarioFragment();
+                                fragmentTrasition = true;
                                 break;
                             case R.id.nav_tarifas://registrar tarifas
                                 fragment = new TarifasFragment();

@@ -362,7 +362,7 @@ public class DetalleParqueaderoFragment extends Fragment implements OnMapReadyCa
             txtDisponibles.setText("");
         }else{
             txtCapacidades.setText("Zonas: " + c.get(0).getCupos());
-            txtDisponibles.setText(c.get(0).getCupos() + "Disponibles");
+            txtDisponibles.setText(c.get(0).getEstado() + " Disponibles");
         }
     }
 }

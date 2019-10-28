@@ -1,5 +1,7 @@
 package co.com.ingenesys.fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -30,8 +32,11 @@ import co.com.ingenesys.modelo.TableDynamic;
 import co.com.ingenesys.modelo.TableDynamicZonas;
 import co.com.ingenesys.modelo.TipoVehiculo;
 import co.com.ingenesys.modelo.Zonas;
+import co.com.ingenesys.ui.InitialActivity;
+import co.com.ingenesys.ui.InitialAdministradorActivity;
 import co.com.ingenesys.utils.Constantes;
 import co.com.ingenesys.utils.Preferences;
+import co.com.ingenesys.utils.Utilidades;
 import co.com.ingenesys.web.VolleySingleton;
 
 public class ZonasFragment  extends Fragment {
@@ -65,17 +70,17 @@ public class ZonasFragment  extends Fragment {
         //crear la tabla dimanica
         tableDynamic = new TableDynamicZonas(table, getContext());
 
-        llenarTabla();
+        llenarTabla(getContext(), zonas, tableDynamic, row);
     }
 
-    private void llenarTabla(){
+    public static void llenarTabla(final Context context, final ArrayList<Zonas> zonas, final TableDynamicZonas tableDynamic, final ArrayList<String[]> row){
         //Añadir parametros a la URL de webservice
-        String parqueadero_id = Preferences.getPreferenceString(getActivity(), Constantes.PREFERENCIA_PARQUEADERO_ID);
+        String parqueadero_id = Preferences.getPreferenceString(context, Constantes.PREFERENCIA_PARQUEADERO_ID);
         String newURL = Constantes.GET_ALL_ZONAS + "?parqueadero_id=" + parqueadero_id;
 
         //petición GET
         VolleySingleton.
-                getInstance(getActivity()).
+                getInstance(context).
                 addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.GET,
@@ -86,7 +91,7 @@ public class ZonasFragment  extends Fragment {
                                     public void onResponse(JSONObject response) {
 
                                         // Procesar la respuesta Json
-                                        procesarRespuesta(response);
+                                        procesarRespuesta(response, zonas, tableDynamic, row);
                                         Log.i(TAG, "processanddo respuesta..." + response);
                                     }
                                 },
@@ -94,7 +99,7 @@ public class ZonasFragment  extends Fragment {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         //descartar el diálogo de progreso
-                                        showSnackBar("Error de red: " + error.getLocalizedMessage());
+                                        Utilidades.showToast((Activity) context, "Error de red: " + error.getLocalizedMessage());
                                         Log.d(TAG, "Error Volley: " + error.toString());
                                     }
                                 }
@@ -102,7 +107,7 @@ public class ZonasFragment  extends Fragment {
                 );
     }
 
-    private void procesarRespuesta(JSONObject response){
+    private static void procesarRespuesta(JSONObject response, ArrayList<Zonas> zonas, TableDynamicZonas tableDynamic, ArrayList<String[]> row){
         try {
             // Obtener atributo "estado"
             String estado = response.getString("estado");

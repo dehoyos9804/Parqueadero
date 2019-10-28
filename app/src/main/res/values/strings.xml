@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Parqueadero</string>
+    <string name="app_name_Registro">Registro Horario</string>
 
     <string name="text_crear_cuenta"><u>Crear una cuenta</u></string>
 
@@ -14,4 +15,22 @@
     <string name="home_admin">Parqueadero</string>
 
     <string name="empty_list">No hay datos</string>
+
+    <string name="bh_closed">Closed</string>
+    <string name="bh_open">Open</string>
+    <string name="bh_start_hours">De</string>
+    <string name="bh_end_hours">A</string>
+
+    <string name="bhv_monday">Lunes</string>
+    <string name="bhv_tuesday">Martes</string>
+    <string name="bhv_wednesday">Miercoles</string>
+    <string name="bhv_thursday">Jueves</string>
+    <string name="bhv_friday">Viernes</string>
+    <string name="bhv_saturday">Sabado</string>
+    <string name="bhv_sunday">Domingo</string>
+
+    <string name="bh_choose_business_hours">Please choose your business hours</string>
+    <string name="apply">Appliquer</string>
+    <string name="all_day">24h</string>
+    <string name="validation_exception_msg">Invalid business hours : You must specify at least one hour .</string>
 </resources>

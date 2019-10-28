@@ -94,6 +94,16 @@
                 android:value=".ui.InitialAdministradorActivity" />
         </activity>
 
+        <!-- Actividad inicial para el administrador -->
+        <activity
+            android:name=".ui.RegistroHorarioActivity"
+            android:label="@string/app_name_Registro"
+            android:theme="@style/Theme.Base">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.RegistroHorarioActivity" />
+        </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

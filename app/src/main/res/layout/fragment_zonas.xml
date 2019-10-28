@@ -22,11 +22,23 @@
                 android:layout_height="wrap_content"
                 android:fillViewport="true">
 
+
                 <TableLayout
                     android:id="@+id/table_zonas"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:background="@color/colorPrimary">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ZONAS"
+                            android:textAppearance="?android:textAppearanceLarge"
+                            android:fontFamily="sans-serif-condensed-light"
+                            android:textColor="@android:color/white"/>
+                    </TableRow>
                 </TableLayout>
             </HorizontalScrollView>
         </ScrollView>
