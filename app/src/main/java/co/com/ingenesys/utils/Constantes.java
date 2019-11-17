@@ -28,6 +28,12 @@ public class Constantes {
     public static final String UPDATE_ESTADO_ZONA = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/capacidad/actualizar_estado_zona.php";
     public static final String INSERT_NEW_HORARIO = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/horario/insertar_new_horario.php";
     public static final String GET_HORARIOS_PARQUEADEROS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/horario/obtener_horarios.php";
+    public static final String GET_IMAGEN_PARQUEADEROS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/parqueadero/obtener_imagen_parqueadero.php";
+    public static final String GET_CUPOS_HORARIO_PARQUEADERO_ID = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/parqueadero/obtener_capacidad_horarios.php";
+    public static final String GET_EMPRESA_PARQUEADERO_ID = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/empresa/obtener_empresa.php";
+    public static final String INSERT_CONVENIOS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/empresa/insertar_empresas.php";
+    public static final String GET_CONVENIOS_PARQUEADEROS_ID = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/empresa/obtener_convenios.php";
+    public static final String GET_REPORTE_VENTA = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/registro/obtener_reportes.php";
     //public static final String GET_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_parqueaderos.php";
 
     //ruta Api para poder obtener las rutas

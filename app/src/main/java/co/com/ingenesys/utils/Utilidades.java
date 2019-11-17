@@ -5,14 +5,18 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
+import android.util.Base64;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -124,5 +128,16 @@ public class Utilidades {
             }
         });
         alerta.show();
+    }
+
+    /**
+     * Convierte un bitmap a cadena*/
+    public static String bitmapToString(Bitmap bitmap){
+        ByteArrayOutputStream array = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, array);
+        byte[] imagenByte = array.toByteArray();
+        String imageString = Base64.encodeToString(imagenByte, Base64.DEFAULT);
+
+        return imageString;
     }
 }

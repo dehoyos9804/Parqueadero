@@ -79,8 +79,15 @@ import co.com.ingenesys.fragment.DialogoReservar;
 import co.com.ingenesys.fragment.ExplorarMapsFragment;
 import co.com.ingenesys.fragment.MenuFragment;
 import co.com.ingenesys.fragment.PruebaFragment;
+import co.com.ingenesys.modelo.AdminParqueadero;
+import co.com.ingenesys.modelo.Capacidad;
+import co.com.ingenesys.modelo.Horarios;
+import co.com.ingenesys.modelo.Imagen;
 import co.com.ingenesys.modelo.Parqueaderos;
+import co.com.ingenesys.modelo.Tarifas;
+import co.com.ingenesys.modelo.Usuarios;
 import co.com.ingenesys.utils.Constantes;
+import co.com.ingenesys.utils.Preferences;
 import co.com.ingenesys.utils.Utilidades;
 import co.com.ingenesys.web.VolleySingleton;
 
@@ -115,11 +122,11 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
     private Button btn_cerrar_button_sheet;
     private ImageView imgParqueadero;
     private TextView txtNombreParqueadero;
-    private TextView txtHoraInicial;
-    private TextView txtHoraFinal;
+    private TextView txtHorario;
     private Button btnVerTarifas;
     private Button btnReservar;
     private Button btnVerRuta;
+    private TextView txtDisponibilidad;
 
     private GeoApiContext geoApiContext = null;
 
@@ -147,11 +154,11 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
         btn_cerrar_button_sheet = (Button) bottom_sheet.findViewById(R.id.btn_cerrar_button_sheet);
         imgParqueadero = (ImageView) bottom_sheet.findViewById(R.id.imgParqueadero);
         txtNombreParqueadero = (TextView) bottom_sheet.findViewById(R.id.txtNombreParqueadero);
-        txtHoraInicial = (TextView) bottom_sheet.findViewById(R.id.txtHoraInicial);
-        txtHoraFinal = (TextView) bottom_sheet.findViewById(R.id.txtHoraFinal);
+        txtHorario = (TextView) bottom_sheet.findViewById(R.id.txtHorario);
         btnVerTarifas = (Button) bottom_sheet.findViewById(R.id.btnVerTarifas);
         btnReservar = (Button) bottom_sheet.findViewById(R.id.btnReservar);
         btnVerRuta = (Button) bottom_sheet.findViewById(R.id.btnVerRuta);
+        txtDisponibilidad  = (TextView) bottom_sheet.findViewById(R.id.txtDisponibilidad);
 
         //colocar oculto el botton sheet
         btn_cerrar_button_sheet.setOnClickListener(new View.OnClickListener() {
@@ -216,10 +223,10 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                         switch (menuItem.getItemId()){
                             case R.id.menu_home_nav://explorar
                                 isMapa = true;
-                            case R.id.menu_2_nav://historial
+                            /*case R.id.menu_2_nav://historial
                                 //fragment = new PruebaFragment();
                                 //fragmentTrasition = true;
-                                break;
+                                break;*/
                             case R.id.menu_nav://lista de asesores
                                 fragment = new MenuFragment();
                                 fragmentTrasition = true;
@@ -485,13 +492,15 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                     //cambiar datos de la ventana
 
                     txtNombreParqueadero.setText(parking.get(i).getRazonSocial());
-                    txtHoraInicial.setText(parking.get(i).getHoraI());
-                    txtHoraFinal.setText(parking.get(i).getHoraF());
+                    //txtHoraInicial.setText(parking.get(i).getHoraI());
+                    //txtHoraFinal.setText(parking.get(i).getHoraF());
+                    getImagenParqueadero(parking.get(i).getId());
+                    getCuposHorarios(parking.get(i).getId());
 
                     final String nombreParqueadero = parking.get(i).getRazonSocial();
                     final String parqueadero_id = parking.get(i).getId();
-                    final String horaI = parking.get(i).getHoraI();
-                    final String horaF = parking.get(i).getHoraF();
+                    final String horaI = "";//parking.get(i).getHoraI();
+                    final String horaF = "";//parking.get(i).getHoraF();
                     final String latitudFinal = parking.get(i).getUbicacionLat();
                     final String longitudFinal = parking.get(i).getUbicacionLon();
 
@@ -499,7 +508,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                     btnVerTarifas.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            TarifasActivity.launch(InitialActivity.this, parqueadero_id, horaI, horaF);//abro la actividad de Tarifas
+                            TarifasActivity.launch(InitialActivity.this, parqueadero_id);//abro la actividad de Tarifas
                             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);//cierro el boton sheet
                         }
                     });
@@ -516,8 +525,8 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                     btnVerRuta.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //webServiceObtenerRuta(latitudInicial, longitudInicial, latitudFinal, longitudFinal);
-                            //pintarRutas();
+                            webServiceObtenerRuta(latitudInicial, longitudInicial, latitudFinal, longitudFinal);
+                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);//cierro el boton sheet
                         }
                     });
 
@@ -575,12 +584,12 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
                 case "1":// EXITO
                     try {
                         // Obtener array "consulta" Json
-                        JSONArray mensaje = response.getJSONArray("tbl_parqueaderos");;
+                        JSONArray mensaje = response.getJSONArray("tbl_parqueaderos");
                         parking = new ArrayList<>();
                         //llenar los parqueaderos de la lista
                         for(int i = 0; i < mensaje.length(); i++){
                             JSONObject object = (JSONObject) mensaje.get(i);
-                            parking.add(new Parqueaderos(object.getString("id"),object.getString("CodigoCamaraComercio"), object.getString("RazonSocial"), object.getString("TELEFONO"),object.getString("DIRECCION"), object.getString("usuario_id"), object.getString("UbicacionLat"), object.getString("UbicacionLon"),object.getString("Foto"), object.getString("Descripcion"), object.getString("horaI"), object.getString("horaF"), object.getString("diasemana"), object.getString("cupos")));
+                            parking.add(new Parqueaderos(object.getString("id"),object.getString("CodigoCamaraComercio"), object.getString("RazonSocial"), object.getString("TELEFONO"),object.getString("DIRECCION"), object.getString("usuario_id"), object.getString("UbicacionLat"), object.getString("UbicacionLon"),object.getString("Descripcion")));
                             //Utilidades.showToast(this, "parking size-->" + object.getString("UbicacionLat"));
                         }
 
@@ -614,11 +623,163 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
         }
     }
 
+    private void getCuposHorarios(String parqueadero_id){
+
+        //Añadir parametros a la URL de webservice
+        String newURL = Constantes.GET_CUPOS_HORARIO_PARQUEADERO_ID + "?parqueadero_id=" + parqueadero_id;
+
+        //petición GET
+        VolleySingleton.
+                getInstance(this).
+                addToRequestQueue(
+                        new JsonObjectRequest(
+                                Request.Method.GET,
+                                newURL,
+                                null,
+                                new Response.Listener<JSONObject>() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+
+                                        // Procesar la respuesta Json
+                                        procesarRespuestaCuposHorario(response);
+                                        Log.i(TAG, "processanddo respuesta..." + response);
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        //descartar el diálogo de progres
+                                        Log.d(TAG, "Error Volley: " + error.toString());
+                                    }
+                                }
+                        )
+                );
+    }
+
+    private void procesarRespuestaCuposHorario(JSONObject response){
+        try {
+            // Obtener atributo "estado"
+            String estado = response.getString("estado");
+            switch (estado){
+                case "1":// EXITO
+                    try {
+                        // Obtener array "consulta" Json
+                        JSONArray datos_horarios = response.getJSONArray("tbl_horarios");
+                        JSONArray datos_capacidad = response.getJSONArray("tbl_capacidad");
+                        //Parsear objeto
+                        Horarios[] horarios = gson.fromJson(datos_horarios.toString(), Horarios[].class);
+                        Capacidad[] capacidad = gson.fromJson(datos_capacidad.toString(), Capacidad[].class);
+
+                        List<Horarios> list_horario = Arrays.asList(horarios);
+                        String  cadena_horario = "";
+                        for (int i = 0; i < list_horario.size(); i++){
+                            cadena_horario = cadena_horario + list_horario.get(i).getDiasemana() + " " + list_horario.get(i).getHoraI() + " - " + list_horario.get(i).getHoraF() + "\n";
+                        }
+
+                        txtHorario.setText(cadena_horario);
+
+                        List<Capacidad> cupos = Arrays.asList(capacidad);
+                        for (int j = 0; j < cupos.size(); j++){
+                            int cupos_disponible = Integer.parseInt(cupos.get(j).getEstado());
+                            if( cupos_disponible!= 0){
+                                txtDisponibilidad.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+                                txtDisponibilidad.setText(cupos_disponible + " Zonas Disponibles");
+                            }else{
+                                txtDisponibilidad.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                                txtDisponibilidad.setText("Actualmente no disponible: cupos ocupados");
+                            }
+                        }
+
+                    }catch (JSONException e){
+                        Log.i(TAG,"Error al llenar Adaptador " +e.getLocalizedMessage());
+                    }
+                    break;
+                case "2":
+                    String mensaje2 = response.getString("mensaje");
+                    break;
+                case "3":
+                    String mensaje3 = response.getString("mensaje");
+                    break;
+            }
+        }catch (JSONException je){
+            Log.d(TAG, je.getMessage());
+        }
+    }
+
+    private void getImagenParqueadero(String parqueadero_id){
+
+        //Añadir parametros a la URL de webservice
+        String newURL = Constantes.GET_IMAGEN_PARQUEADEROS + "?parqueadero_id=" + parqueadero_id;
+
+        //petición GET
+        VolleySingleton.
+                getInstance(this).
+                addToRequestQueue(
+                        new JsonObjectRequest(
+                                Request.Method.GET,
+                                newURL,
+                                null,
+                                new Response.Listener<JSONObject>() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+
+                                        // Procesar la respuesta Json
+                                        procesarRespuestaImagen(response);
+                                        Log.i(TAG, "processanddo respuesta..." + response);
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        //descartar el diálogo de progreso
+                                        Log.d(TAG, "Error Volley: " + error.toString());
+                                    }
+                                }
+                        )
+                );
+    }
+
+    private void procesarRespuestaImagen(JSONObject response){
+        try {
+            // Obtener atributo "estado"
+            String estado = response.getString("estado");
+            switch (estado){
+                case "1":// EXITO
+                    try {
+                        // Obtener array "consulta" Json
+                        JSONObject datos = response.getJSONObject("tbl_parqueaderos");
+                        //Parsear objeto
+                        Imagen is = gson.fromJson(datos.toString(),Imagen.class);
+                        //iniciamos la sesion
+                        if(is.getImagen() != null){
+                            imgParqueadero.setImageBitmap(is.getImagen());
+                        }else{
+                            imgParqueadero.setImageResource(R.drawable.image);
+                        }
+
+                    }catch (JSONException e){
+                        Log.i(TAG,"Error al llenar Adaptador " +e.getLocalizedMessage());
+                    }
+                    break;
+                case "2":
+                    String mensaje2 = response.getString("mensaje");
+                    Utilidades.showToast(this, mensaje2);
+                    break;
+                case "3":
+                    String mensaje3 = response.getString("mensaje");
+                    Utilidades.showToast(this, mensaje3);
+                    break;
+            }
+        }catch (JSONException je){
+            Log.d(TAG, je.getMessage());
+        }
+    }
+
     /**desde aqui se implementa toda la logica de las rutas*/
 
     /**permite hacer peticiones http https para obtener la ruta en json */
     private void webServiceObtenerRuta(String latitudInicial, String longitudInicial, String latidudFinal, String longitudFinal){
-        String newURL = Constantes.GET_RUTAS_API_GOOGLE + "?origin=" + latitudInicial + "," + longitudInicial + "&destination=" + latidudFinal + "," + longitudFinal +"&key=" + getString(R.string.google_maps_key);
+        String newURL = Constantes.GET_RUTAS_API_GOOGLE + "?origin=" + latitudInicial+ "," + longitudInicial + "&destination=" + latidudFinal+ "," + longitudFinal +"&key=" + getString(R.string.key_google_service) + "&sensor=true";
 
         // Petición GET
         VolleySingleton.
@@ -642,24 +803,25 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
 
                                         try {
                                             jRoutes = response.getJSONArray("routes");
+                                            Log.i(TAG, "routes=>" + jRoutes);
 
-                                            /**Recorriendo todas las rutas @routes*/
-                                            for (int i = 0; i < jRoutes.length(); i++){
-                                                jLegs = ( (JSONObject) jLegs.get(i)).getJSONArray("legs");
+                                            /** Traversing all routes */
+                                            for(int i=0;i<jRoutes.length();i++){
+                                                jLegs = ( (JSONObject)jRoutes.get(i)).getJSONArray("legs");
                                                 List<HashMap<String, String>> path = new ArrayList<HashMap<String, String>>();
 
-                                                /**Recorriendo todas las piernas @legs*/
-                                                for (int j = 0; j < jLegs.length(); j++){
+                                                /** Traversing all legs */
+                                                for(int j=0;j<jLegs.length();j++){
                                                     jSteps = ( (JSONObject)jLegs.get(j)).getJSONArray("steps");
 
-                                                    /**Recorriendo todas los pasos @steps*/
-                                                    for (int k = 0; k <jSteps.length(); k++){
+                                                    /** Traversing all steps */
+                                                    for(int k=0;k<jSteps.length();k++){
                                                         String polyline = "";
                                                         polyline = (String)((JSONObject)((JSONObject)jSteps.get(k)).get("polyline")).get("points");
                                                         List<LatLng> list = decodePoly(polyline);
 
-                                                        /**Recorriendo todas los puntos @points*/
-                                                        for (int l = 0; l < list.size(); l++){
+                                                        /** Traversing all points */
+                                                        for(int l=0;l<list.size();l++){
                                                             HashMap<String, String> hm = new HashMap<String, String>();
                                                             hm.put("lat", Double.toString(((LatLng)list.get(l)).latitude) );
                                                             hm.put("lng", Double.toString(((LatLng)list.get(l)).longitude) );
@@ -775,6 +937,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
         LatLng center = null;
         ArrayList<LatLng> points = null;
         PolylineOptions lineOptions = null;
+        Log.i(TAG, "LLEGUE pintar rutas");
 
         // recorriendo todas las rutas
         for (int i = 0; i < Utilidades.routes.size(); i++){
@@ -787,6 +950,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
             // Obteniendo todos los puntos y/o coordenadas de la ruta
             for (int j = 0; j < path.size(); j++){
                 HashMap<String,String> point = path.get(j);
+                Log.i(TAG, "rutas=>"+path.get(j));
 
                 double lat = Double.parseDouble(point.get("lat"));
                 double lng = Double.parseDouble(point.get("lng"));
@@ -804,7 +968,7 @@ public class InitialActivity extends AppCompatActivity implements OnMapReadyCall
             lineOptions.addAll(points);
 
             //Definimos el grosor de las Polilíneas
-            lineOptions.width(2);
+            lineOptions.width(15);
 
             //Definimos el color de la Polilíneas
             lineOptions.color(Color.CYAN);

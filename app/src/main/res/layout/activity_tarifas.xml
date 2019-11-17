@@ -20,79 +20,100 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="15dp">
+            android:layout_margin="25dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_liner_layer"
-                android:gravity="center"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/txtParqueadero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Horarios de atención"
+                    android:text="PARQUEADERO SATELITE"
+                    android:gravity="center"
                     android:textAppearance="?android:textAppearanceMedium"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="9dp">
-
-                    <ImageView
-                        android:layout_width="40sp"
-                        android:layout_height="40sp"
-                        android:layout_marginRight="15dp"
-                        android:src="@drawable/ic_horarios_light"/>
-
-                    <TextView
-                        android:id="@+id/txtHoraI"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="08:00:00 am"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginRight="15dp"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:fontFamily="sans-serif-light"/>
-
-                    <TextView
-                        android:id="@+id/txtHoraF"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="12:00:00 am"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="sans-serif-light"
-                        />
-                </LinearLayout>
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
 
                 <TextView
+                    android:id="@+id/text_tarifas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/txtParqueadero"
                     android:text="Tarifas"
                     android:textAppearance="?android:textAppearanceMedium"
-                    android:gravity="center"
-                    android:fontFamily="sans-serif-light"/>
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textStyle="bold"/>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layer_tarifa"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/text_tarifas"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
 
-            <LinearLayout
-                android:id="@+id/layer_tarifa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"/>
+                <View
+                    android:id="@+id/view_tarifas"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/layer_tarifa"
+                    android:background="@android:color/darker_gray"/>
 
+                <TextView
+                    android:id="@+id/text_horarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="Horarios"
+                    android:layout_below="@id/view_tarifas"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtDiaSemana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_horarios"
+                    android:text="Lunes\n Martes"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:layout_alignParentLeft="true"/>
+
+                <TextView
+                    android:id="@+id/txtHoras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_horarios"
+                    android:text="08:00:00 am - 12:00:00 pm\n08:00:00 am - 12:00:00 pm"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:layout_alignParentRight="true"/>
+
+                <View
+                    android:id="@+id/view_final"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/txtHoras"
+                    android:background="@android:color/darker_gray"/>
+
+
+                <Button
+                    android:id="@+id/btnRegresar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_final"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="55dp"
+                    android:text="REGRESAR"
+                    android:background="@drawable/ic_round_button"
+                    android:textColor="@android:color/background_light"/>
+
+
+            </RelativeLayout>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
@@ -101,7 +122,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_add"
         android:layout_width="match_parent"
-        android:layout_height="256dp"
+        android:layout_height="200dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -122,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
-                android:scaleType="center"
+                android:scaleType="fitXY"
                 android:background="@color/colorPrimaryDark"
                 android:src="@drawable/image"
                 app:layout_collapseMode="parallax" />

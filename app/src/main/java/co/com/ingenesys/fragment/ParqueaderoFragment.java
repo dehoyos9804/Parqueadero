@@ -538,7 +538,7 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
         String usuarioid = Preferences.getPreferenceString(getContext(), Constantes.PREFERENCIA_IDUSUARIO_CLAVE);
         String latitud = txtLatitud.getText().toString().trim();
         String longitud = txtLongitud.getText().toString().trim();
-        String foto = "";
+        String foto = Utilidades.bitmapToString(bmatp);
         String descripcion = txtDescripcion.getText().toString().trim();
 
 

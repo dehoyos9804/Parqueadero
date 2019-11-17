@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/ic_liner_layer">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/icono_tipo_vehiculo"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/ic_calendar_light"/>
+
+            <TextView
+                android:id="@+id/txtFechaEntradaSalida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Fecha Entrada: \n 2019-11-17 00:00:00 \n Fecha Salida:\n 2019-11-17 01:00:00"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginBottom="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNombreUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textStyle="bold"
+                android:text="Aldair De Hoyos Teran"/>
+
+            <TextView
+                android:id="@+id/txtNumeroCedula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Cedula: 1063081111"/>
+
+            <TextView
+                android:id="@+id/txtNumeroVenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Venta N° 1232342"/>
+
+            <TextView
+                android:id="@+id/txtVehiculo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Tipo Vehiculo: Carro"/>
+
+            <TextView
+                android:id="@+id/txtPrecioTarifa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Tarifa $2500 - SubTot. $2250"/>
+
+            <TextView
+                android:id="@+id/txtDescuento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Descuento: 10%"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

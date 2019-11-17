@@ -9,23 +9,20 @@ public class AdminParqueadero {
     private String usuario_id;
     private String UbicacionLat;
     private String UbicacionLon;
-    private String Foto;
+    //private String Foto;
     private String Descripcion;
 
     //constructor
-    public AdminParqueadero(String id, String CodigoCamaraComercio, String RazonSocial, String TELEFONO,
-                        String DIRECCION, String usuario_id, String UbicacionLat, String UbicacionLon,
-                        String Foto, String Descripcion) {
+    public AdminParqueadero(String id, String codigoCamaraComercio, String razonSocial, String TELEFONO, String DIRECCION, String usuario_id, String ubicacionLat, String ubicacionLon, String descripcion) {
         this.id = id;
-        this.CodigoCamaraComercio = CodigoCamaraComercio;
-        this.RazonSocial = RazonSocial;
+        CodigoCamaraComercio = codigoCamaraComercio;
+        RazonSocial = razonSocial;
         this.TELEFONO = TELEFONO;
         this.DIRECCION = DIRECCION;
         this.usuario_id = usuario_id;
-        this.UbicacionLat = UbicacionLat;
-        this.UbicacionLon = UbicacionLon;
-        this.Foto = Foto;
-        this.Descripcion = Descripcion;
+        UbicacionLat = ubicacionLat;
+        UbicacionLon = ubicacionLon;
+        Descripcion = descripcion;
     }
 
     //getter y setter
@@ -91,14 +88,6 @@ public class AdminParqueadero {
 
     public void setUbicacionLon(String UbicacionLon) {
         this.UbicacionLon = UbicacionLon;
-    }
-
-    public String getFoto() {
-        return Foto;
-    }
-
-    public void setFoto(String Foto) {
-        this.Foto = Foto;
     }
 
     public String getDescripcion() {

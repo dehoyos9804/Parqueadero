@@ -39,8 +39,13 @@ import java.util.ArrayList;
 import co.com.ingenesys.R;
 import co.com.ingenesys.fragment.CuposFragment;
 import co.com.ingenesys.fragment.DetalleParqueaderoFragment;
+import co.com.ingenesys.fragment.EmpresaFragment;
 import co.com.ingenesys.fragment.HorarioFragment;
+import co.com.ingenesys.fragment.MisConveniosFragment;
 import co.com.ingenesys.fragment.ParqueaderoFragment;
+import co.com.ingenesys.fragment.RegistroVentaFragment;
+import co.com.ingenesys.fragment.ReporteDiarioFragment;
+import co.com.ingenesys.fragment.ReporteMensualFragment;
 import co.com.ingenesys.fragment.TarifasFragment;
 import co.com.ingenesys.fragment.ZonasFragment;
 import co.com.ingenesys.modelo.NumeroParqueadero;
@@ -128,6 +133,10 @@ public class InitialAdministradorActivity extends AppCompatActivity {
                             case R.id.nav_home://inicio
                                 getHTTP();
                                 break;
+                            /*case R.id.nav_registro:
+                                fragment = new RegistroVentaFragment();
+                                fragmentTrasition = true;
+                                break;*/
                             case R.id.nav_horario:
                                 fragment = new HorarioFragment();
                                 fragmentTrasition = true;
@@ -142,6 +151,22 @@ public class InitialAdministradorActivity extends AppCompatActivity {
                                 break;
                             case R.id.nav_add_zonas:
                                 fragment = new CuposFragment();
+                                fragmentTrasition = true;
+                                break;
+                            case R.id.nav_reporte_diarios:
+                                fragment = new ReporteDiarioFragment();
+                                fragmentTrasition = true;
+                                break;
+                            /*case R.id.nav_reporte_mensuales:
+                                fragment = new ReporteMensualFragment();
+                                fragmentTrasition = true;
+                                break;*/
+                            case R.id.nav_empresas:
+                                fragment = new EmpresaFragment();
+                                fragmentTrasition = true;
+                                break;
+                            case R.id.nav_convenios:
+                                fragment = new MisConveniosFragment();
                                 fragmentTrasition = true;
                                 break;
                             case R.id.nav_cerrar_sesion://cerramos la sesión del usuario actual

@@ -9,31 +9,20 @@ public class Parqueaderos {
     private String usuario_id;
     private String UbicacionLat;
     private String UbicacionLon;
-    private String Foto;
+    //private String Foto;
     private String Descripcion;
-    private String horaI;
-    private String horaF;
-    private String diasemana;
-    private String cupos;
 
     //constructor
-    public Parqueaderos(String id, String CodigoCamaraComercio, String RazonSocial, String TELEFONO,
-                        String DIRECCION, String usuario_id, String UbicacionLat, String UbicacionLon,
-                        String Foto, String Descripcion, String horaI, String horaF, String diasemana, String cupos) {
+    public Parqueaderos(String id, String codigoCamaraComercio, String razonSocial, String TELEFONO, String DIRECCION, String usuario_id, String ubicacionLat, String ubicacionLon, String descripcion) {
         this.id = id;
-        this.CodigoCamaraComercio = CodigoCamaraComercio;
-        this.RazonSocial = RazonSocial;
+        CodigoCamaraComercio = codigoCamaraComercio;
+        RazonSocial = razonSocial;
         this.TELEFONO = TELEFONO;
         this.DIRECCION = DIRECCION;
         this.usuario_id = usuario_id;
-        this.UbicacionLat = UbicacionLat;
-        this.UbicacionLon = UbicacionLon;
-        this.Foto = Foto;
-        this.Descripcion = Descripcion;
-        this.horaI = horaI;
-        this.horaF = horaF;
-        this.diasemana = diasemana;
-        this.cupos = cupos;
+        UbicacionLat = ubicacionLat;
+        UbicacionLon = ubicacionLon;
+        Descripcion = descripcion;
     }
 
     //getter y setter
@@ -100,52 +89,11 @@ public class Parqueaderos {
     public void setUbicacionLon(String UbicacionLon) {
         this.UbicacionLon = UbicacionLon;
     }
-
-    public String getFoto() {
-        return Foto;
-    }
-
-    public void setFoto(String Foto) {
-        this.Foto = Foto;
-    }
-
     public String getDescripcion() {
         return Descripcion;
     }
 
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
-    }
-
-    public String getHoraI() {
-        return horaI;
-    }
-
-    public void setHoraI(String horaI) {
-        this.horaI = horaI;
-    }
-
-    public String getHoraF() {
-        return horaF;
-    }
-
-    public void setHoraF(String horaF) {
-        this.horaF = horaF;
-    }
-
-    public String getDiasemana() {
-        return diasemana;
-    }
-
-    public void setDiasemana(String diasemana) {
-        this.diasemana = diasemana;
-    }
-
-    public String getCupos() {
-        return cupos;
-    }
-
-    public void setCupos(String cupos) {
-        this.cupos = cupos;
     }
 }

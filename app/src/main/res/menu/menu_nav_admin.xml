@@ -7,6 +7,12 @@
             android:icon="@drawable/ic_home_light"
             android:title="Mi Parqueadero"/>
 
+        <!--<item
+            android:id="@+id/nav_registro"
+            android:checked="true"
+            android:icon="@drawable/ic_registro_light"
+            android:title=" Registros"/>-->
+
         <item
             android:id="@+id/nav_horario"
             android:checked="true"
@@ -47,10 +53,28 @@
                         android:icon="@drawable/ic_movimiento_light"
                         android:title="Reporte diarios" />
 
-                    <item
+                    <!--<item
                         android:id="@+id/nav_reporte_mensuales"
                         android:icon="@drawable/ic_reporte_light"
-                        android:title="Reportes mensuales" />
+                        android:title="Reportes mensuales" />-->
+                </group>
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/nav_menu_convenios"
+            android:title="Convenios">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_empresas"
+                        android:icon="@drawable/ic_empresas_light"
+                        android:title="Empresas" />
+
+                    <item
+                        android:id="@+id/nav_convenios"
+                        android:icon="@drawable/ic_convenios_light"
+                        android:title="Mis Convenios" />
                 </group>
             </menu>
         </item>

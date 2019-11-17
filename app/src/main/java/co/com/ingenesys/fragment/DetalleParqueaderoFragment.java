@@ -74,6 +74,9 @@ public class DetalleParqueaderoFragment extends Fragment implements OnMapReadyCa
     private TextView txtDireccion;
     private TextView text_tarifas;
 
+    private double latitud = 0.0;
+    private double longitud = 0.0;
+
     private ViewGroup layout_grupo;
 
     private Gson gson = new Gson();
@@ -159,7 +162,7 @@ public class DetalleParqueaderoFragment extends Fragment implements OnMapReadyCa
         }else{
 
             //agrego el boton de mi ubicacion
-            addMarcador(9.30869741, -75.40327802);
+            addMarcador(latitud, longitud);
         }
     }
 
@@ -302,6 +305,9 @@ public class DetalleParqueaderoFragment extends Fragment implements OnMapReadyCa
         txtTelefono.setText(p.getTELEFONO());
         txtDescripcion.setText(p.getDescripcion());
         txtDireccion.setText(p.getDIRECCION());
+
+        latitud = Double.parseDouble(p.getUbicacionLat());
+        longitud = Double.parseDouble(p.getUbicacionLon());
 
         //guardo las preferencia para mi parqueadero_id en memoria
         Preferences.savePreferenceString(getContext(), p.getId(), Constantes.PREFERENCIA_PARQUEADERO_ID);

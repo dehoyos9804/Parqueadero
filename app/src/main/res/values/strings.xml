@@ -33,4 +33,6 @@
     <string name="apply">Appliquer</string>
     <string name="all_day">24h</string>
     <string name="validation_exception_msg">Invalid business hours : You must specify at least one hour .</string>
+
+    <string name="key_google_service">AIzaSyDqc5vEuI2l1btJqCNU75PghSnneDoBICk</string>
 </resources>

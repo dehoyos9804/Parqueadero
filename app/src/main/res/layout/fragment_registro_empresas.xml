@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinator_empresa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/button_cornered_grey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Registrar Empresas"
+                android:gravity="center"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:fontFamily="sans-serif-condensed-light"
+                android:textStyle="bold"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_nit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_titulo">
+
+                <EditText
+                    android:id="@+id/txtNit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nit:0000"
+                    android:inputType="text"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:drawableLeft="@drawable/ic_empresas_light"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_razon_social"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/input_nit">
+
+                <EditText
+                    android:id="@+id/txtRazonSocial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Razon Social"
+                    android:inputType="text"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:drawableLeft="@drawable/ic_registro_light"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_telefono"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/input_razon_social">
+
+                <EditText
+                    android:id="@+id/txtTelefonoEmpresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Telefono"
+                    android:inputType="phone"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:drawableLeft="@drawable/ic_phone_light"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_direccion"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@id/input_razon_social"
+                android:layout_toRightOf="@id/input_telefono">
+
+                <EditText
+                    android:id="@+id/txtDireccionEmpresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Direccion"
+                    android:inputType="text"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:drawableLeft="@drawable/ic_direccion_light"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_button_round_primary"
+                android:text="Registrar"
+                android:layout_below="@id/input_direccion"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/white"/>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_height="match_parent">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <TableLayout
+                    android:id="@+id/table_empresa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                </TableLayout>
+            </HorizontalScrollView>
+        </ScrollView>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
