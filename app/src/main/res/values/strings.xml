@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Parqueadero</string>
     <string name="app_name_Registro">Registro Horario</string>
+    <string name="app_name_pdf">Reporte PDF</string>
 
     <string name="text_crear_cuenta"><u>Crear una cuenta</u></string>
 

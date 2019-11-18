@@ -104,6 +104,16 @@
                 android:value=".ui.RegistroHorarioActivity" />
         </activity>
 
+        <!--visualizar PDF-->
+        <activity
+            android:name=".ui.ViewPDFActivity"
+            android:label="@string/app_name_pdf"
+            android:theme="@style/Theme.Base">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ViewPDFActivity" />
+        </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

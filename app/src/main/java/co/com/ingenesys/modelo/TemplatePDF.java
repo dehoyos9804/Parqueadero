@@ -31,6 +31,7 @@ import java.util.Arrays;
 
 import co.com.ingenesys.fragment.MisConveniosFragment;
 import co.com.ingenesys.ui.InitialAdministradorActivity;
+import co.com.ingenesys.ui.ViewPDFActivity;
 import co.com.ingenesys.utils.Utilidades;
 
 public class TemplatePDF {
@@ -87,7 +88,7 @@ public class TemplatePDF {
             paragraph = new Paragraph();
             addChildP(new Paragraph(title, fTitle));
             addChildP(new Paragraph(subTitle, fSubTitle));
-            addChildP(new Paragraph("Generado" + date, fHighText));
+            addChildP(new Paragraph("Generado " + date, fHighText));
             paragraph.setSpacingAfter(30);
             document.add(paragraph);
         }catch (Exception e){
@@ -145,7 +146,7 @@ public class TemplatePDF {
     }
 
     public void viewPDF(){
-        Intent intent  = new Intent(context, InitialAdministradorActivity.class);
+        Intent intent  = new Intent(context, ViewPDFActivity.class);
         intent.putExtra("path", pdfFile.getAbsolutePath());
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);

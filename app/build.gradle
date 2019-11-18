@@ -37,4 +37,5 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     implementation 'com.github.bashizip:business-hours-picker:1.0.0'
     implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.1'
 }

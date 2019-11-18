@@ -34,7 +34,30 @@ public class Constantes {
     public static final String INSERT_CONVENIOS = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/empresa/insertar_empresas.php";
     public static final String GET_CONVENIOS_PARQUEADEROS_ID = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/empresa/obtener_convenios.php";
     public static final String GET_REPORTE_VENTA = "http://" + IP + PUERTO_HOST + "/Parqueaderos/web/registro/obtener_reportes.php";
-    //public static final String GET_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_parqueaderos.php";
+
+    /*public static final String GET_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_parqueaderos.php";
+    public static final String GET_TARIFAS_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_tarifa_parqueadero.php";
+    public static final String INSERT_NEW_RESERVA = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/insertar_new_reserva.php";
+    public static final String GET_ALL_TIPO_VEHICULO = "https://parking-sincelejo.000webhostapp.com/web/tipovehiculo/obtener_tipo_vehiculo.php";
+    public static final String INSERT_NEW_USUARIO = "https://parking-sincelejo.000webhostapp.com/web/usuario/insertar_new_usuario.php";
+    public static final String GET_INICIAR_SESION = "https://parking-sincelejo.000webhostapp.com/web/usuario/iniciar_sesion_user.php";
+    public static final String INSERT_NEW_PARKING = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/insertar_new_parqueadero.php";
+    public static final String GET_EXISTE_PARQUEADERO = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_numero_parqueadero.php";
+    public static final String GET_DETALLE_PARQUEADERO = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_parqueadero_usuario_id.php";
+    public static final String GET_CAPACIDADES_PARQUEADERO_ID = "https://parking-sincelejo.000webhostapp.com/web/capacidad/obtener_all_capacidad.php";
+    public static final String INSERTAR_CAPACIDADES = "https://parking-sincelejo.000webhostapp.com/web/capacidad/insertar_new_capacidades.php";
+    public static final String INSERTAR_TARIFAS = "https://parking-sincelejo.000webhostapp.com/web/tarifa/insertar_new_tarifa.php";
+    public static final String GET_ALL_ZONAS = "https://parking-sincelejo.000webhostapp.com/web/capacidad/obtener_all_zonas.php";
+    public static final String UPDATE_ESTADO_ZONA = "https://parking-sincelejo.000webhostapp.com/web/capacidad/actualizar_estado_zona.php";
+    public static final String INSERT_NEW_HORARIO = "https://parking-sincelejo.000webhostapp.com/web/horario/insertar_new_horario.php";
+    public static final String GET_HORARIOS_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/horario/obtener_horarios.php";
+    public static final String GET_IMAGEN_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_imagen_parqueadero.php";
+    public static final String GET_CUPOS_HORARIO_PARQUEADERO_ID = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_capacidad_horarios.php";
+    public static final String GET_EMPRESA_PARQUEADERO_ID = "https://parking-sincelejo.000webhostapp.com/web/empresa/obtener_empresa.php";
+    public static final String INSERT_CONVENIOS = "https://parking-sincelejo.000webhostapp.com/web/empresa/insertar_empresas.php";
+    public static final String GET_CONVENIOS_PARQUEADEROS_ID = "https://parking-sincelejo.000webhostapp.com/web/empresa/obtener_convenios.php";
+    public static final String GET_REPORTE_VENTA = "https://parking-sincelejo.000webhostapp.com/web/registro/obtener_reportes.php";
+    //public static final String GET_PARQUEADEROS = "https://parking-sincelejo.000webhostapp.com/web/parqueadero/obtener_parqueaderos.php";*/
 
     //ruta Api para poder obtener las rutas
     public static final String GET_RUTAS_API_GOOGLE = "https://maps.googleapis.com/maps/api/directions/json";
