@@ -93,7 +93,7 @@ public class TableDynamicZonas {
                                 estado = "ocupado";
                             }
 
-                            updateEstadoZona(rows[0], estado);
+                            updateEstadoZona(rows[0], estado, rows[1]);
                         }
                     });
                 }else{
@@ -132,11 +132,12 @@ public class TableDynamicZonas {
     /**
      * Actualiza los cambios de una zona.
      */
-    private void updateEstadoZona(String idzona, String estado) {
+    private void updateEstadoZona(String idzona, String estado, String numero_zonas) {
 
         LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();// Mapeo previo
         map.put("idzona",idzona);
         map.put("estado", estado);
+        map.put("numero_zona", numero_zonas);
 
         // Crear nuevo objeto Json basado en el mapa
         JSONObject jobject = new JSONObject(map);

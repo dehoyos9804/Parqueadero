@@ -25,15 +25,15 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
-                android:id="@+id/text_fecha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fecha Diaria"
-                android:layout_below="@id/text_titulo_reporte"
-                android:gravity="center"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:fontFamily="sans-serif-condensed-light"
-                android:textStyle="bold"/>
+            android:id="@+id/text_fecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha Diaria"
+            android:layout_below="@id/text_titulo_reporte"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:fontFamily="sans-serif-condensed-light"
+            android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/txtFechaDiaria"
