@@ -58,6 +58,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
@@ -80,7 +81,7 @@ import co.com.ingenesys.web.VolleySingleton;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
+public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnMarkerDragListener {
     //etiqueta para la depuracion
     private static final String TAG = ParqueaderoFragment.class.getSimpleName();
 
@@ -119,6 +120,8 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
     private final String CARPETA_RAIZ = "AppParking/";
     private final String RUTA_IMAGEN_NEW = CARPETA_RAIZ + "AppParking";
     private String path;
+
+    private Marker markerDraw;
 
     //costructor del fragmento
     public ParqueaderoFragment() {
@@ -302,6 +305,8 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
 
             updateUbicacion(location);
         }
+
+        googleMap.setOnMarkerDragListener(this);
     }
 
     /**
@@ -311,9 +316,10 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
         if(location != null){
             latitud = location.getLatitude();
             longitud = location.getLongitude();
-            addMarcador(latitud, longitud);
 
             setLocation(location);
+
+            addMarcador(latitud, longitud);
         }
     }
 
@@ -322,9 +328,10 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
      * */
     private void addMarcador(double latitud, double longitud){
         LatLng coordenadas = new LatLng(latitud, longitud);
+
         CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 16);
 
-        googleMap.addMarker(new MarkerOptions().position(coordenadas).title("Mi ubicacion").icon(BitmapDescriptorFactory.fromResource(R.drawable.parking2)));
+        markerDraw = googleMap.addMarker(new MarkerOptions().position(coordenadas).draggable(true).title("Mi ubicacion").icon(BitmapDescriptorFactory.fromResource(R.drawable.parking2)));
         googleMap.animateCamera(miUbicacion);
 
         txtLatitud.setText(String.valueOf(latitud));
@@ -639,6 +646,31 @@ public class ParqueaderoFragment extends Fragment implements OnMapReadyCallback,
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onMarkerDragStart(Marker marker) {
+        if(marker.equals(markerDraw)){
+            showSnackBar("Iniciando busqueda manual");
+        }
+    }
+
+    @Override
+    public void onMarkerDrag(Marker marker) {
+        if(marker.equals(markerDraw)){
+            //String newTexto = String.format(Locale.getDefault(), marker.getPosition().latitude, marker.getPosition().longitude);
+            String latitud = String.valueOf(marker.getPosition().latitude);
+            String longitud = String.valueOf(marker.getPosition().longitude);
+            txtLatitud.setText(latitud);
+            txtLongitud.setText(longitud);
+        }
+    }
+
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        if(marker.equals(markerDraw)){
+            showSnackBar("finalizando busqueda manual");
         }
     }
 }

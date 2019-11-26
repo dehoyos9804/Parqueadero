@@ -162,7 +162,7 @@ public class DetalleParqueaderoFragment extends Fragment implements OnMapReadyCa
         }else{
 
             //agrego el boton de mi ubicacion
-            addMarcador(latitud, longitud);
+            //addMarcador(latitud, longitud);
         }
     }
 
@@ -183,7 +183,7 @@ public class DetalleParqueaderoFragment extends Fragment implements OnMapReadyCa
                 }else{
 
                     //agrego el boton de mi ubicacion
-                    addMarcador(9.30869741, -75.40327802);
+                    //addMarcador(9.30869741, -75.40327802);
                 }
             }else{
                 showAlert();
@@ -309,6 +309,7 @@ public class DetalleParqueaderoFragment extends Fragment implements OnMapReadyCa
         latitud = Double.parseDouble(p.getUbicacionLat());
         longitud = Double.parseDouble(p.getUbicacionLon());
 
+        addMarcador(latitud, longitud);
         //guardo las preferencia para mi parqueadero_id en memoria
         Preferences.savePreferenceString(getContext(), p.getId(), Constantes.PREFERENCIA_PARQUEADERO_ID);
     }

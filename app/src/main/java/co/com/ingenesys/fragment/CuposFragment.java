@@ -394,7 +394,7 @@ public class CuposFragment extends Fragment {
                 showSnackBar("Debe Agregar el numero de cupos");
                 txtCupos.requestFocus();
             }else{
-                if(cupo_id.size()> 0){
+                /*if(cupo_id.size()> 0){
                     for(int i = 0; i < cupo_id.size(); i++){
                         if(tipovehiculo_id.equalsIgnoreCase(cupo_id.get(i))){
                             showSnackBar("ya existen cupos asignados para este tipo de vehiculo");
@@ -403,7 +403,8 @@ public class CuposFragment extends Fragment {
                     }
                 }else{
                     estado = true;
-                }
+                }*/
+                estado = true;
             }
         }
 

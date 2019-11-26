@@ -85,9 +85,13 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
         data_empty = (TextView) view.findViewById(R.id.data_empty);
         bh_view = (BusinessHoursWeekView) view.findViewById(R.id.bh_view);
 
-        getHorariosHTTP();
-
         fab_horario.setOnClickListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getHorariosHTTP();
     }
 
     @Override

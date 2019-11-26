@@ -110,7 +110,6 @@ public class TarifasFragment extends Fragment implements View.OnClickListener {
         lManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(lManager);
         emptyView = (TextView) view.findViewById(R.id.recyclerview_data_empty);
-        getHTTP();
 
         bottom_sheet = (LinearLayout) view.findViewById(R.id.bottom_shent);
         sheetBehavior = BottomSheetBehavior.from(bottom_sheet);
@@ -230,6 +229,12 @@ public class TarifasFragment extends Fragment implements View.OnClickListener {
             }
         }
         return estado;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getHTTP();
     }
 
     /*
