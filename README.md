@@ -19,9 +19,9 @@ tener cuenta en google console
 
 ## Vistas📖
 
-![](C:\Users\dehoyos\Documents\AndroidProjects\Parqueadero\app\recursos\1.png) ![](C:\Users\dehoyos\Documents\AndroidProjects\Parqueadero\app\recursos\2.png) ![](C:\Users\dehoyos\Documents\AndroidProjects\Parqueadero\app\recursos\3.png) 
+![](https://github.com/dehoyos9804/Parqueadero/blob/master/app/recursos/1.png) ![](https://github.com/dehoyos9804/Parqueadero/blob/master/app/recursos/2.png) ![](https://github.com/dehoyos9804/Parqueadero/blob/master/app/recursos/3.png) 
 
-![](C:\Users\dehoyos\Documents\AndroidProjects\Parqueadero\app\recursos\4.png) 
+![](https://github.com/dehoyos9804/Parqueadero/blob/master/app/recursos/4.png) 
 
 ## Autores ✒️
 
